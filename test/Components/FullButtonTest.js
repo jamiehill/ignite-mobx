@@ -1,7 +1,7 @@
 // https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md
 import test from 'ava'
 import React from 'react'
-import FullButton from '../../src/Components/FullButton'
+import FullButton from 'app/components/FullButton'
 import { shallow } from 'enzyme'
 
 // Basic wrapper

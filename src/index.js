@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Provider } from 'mobx-react';
-import RootContainer from './app/container';
-import stores from './app/stores';
-import '../config'
+import Container from 'app/container'
+import { Provider } from 'mobx-react'
+import stores from 'app/stores'
+import 'config'
 
 const App = () => (
   <Provider {...stores}>
-    <RootContainer />
+    <Container />
   </Provider>
 )
 

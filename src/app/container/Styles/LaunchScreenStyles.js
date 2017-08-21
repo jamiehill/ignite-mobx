@@ -12,6 +12,11 @@ export default StyleSheet.create({
     width: Metrics.images.logo,
     resizeMode: 'contain'
   },
+  top: {
+    marginTop: Metrics.doubleSection,
+    height: 40,
+    width: 40,
+  },
   centered: {
     alignItems: 'center'
   }

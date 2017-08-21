@@ -1,75 +1,64 @@
-import React from 'react';
-import {ScrollView, Text, View, Image, KeyboardAvoidingView, TextInput, Keyboard} from 'react-native';
-import Spinner from '../Components/Spinner';
-import I18n from 'react-native-i18n';
-import {createIconSetFromFontello} from 'react-native-vector-icons';
-import RoundedButton from '../Components/RoundedButton';
-import {observer, inject} from 'mobx-react/native';
-import {Metrics, Colors, Images} from 'styles';
-import styles from './Styles/LoginScreenStyles';
+import React from 'react'
+import {ScrollView, Text, View, Image, KeyboardAvoidingView, TextInput, Keyboard} from 'react-native'
+import Spinner from 'app/components/Spinner'
+import I18n from 'react-native-i18n'
+import {createIconSetFromFontello} from 'react-native-vector-icons'
+import RoundedButton from 'app/components/RoundedButton'
+import {observer, inject} from 'mobx-react/native'
+import {Metrics, Colors, Images} from 'styles'
+import styles from './Styles/LoginScreenStyles'
 
 @inject('userStore')
 @observer
 class LoginScreen extends React.Component {
 
-  constructor(props) {
-
-
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
 
       email: 'reactnative@infinite.red',
       password: 'password'
 
-
-    };
+    }
   }
 
   componentWillReact = () => {
+    console.log('componentWillReact LoginScreen')
+    const {navigation, userStore} = this.props
 
-
-    console.log('componentWillReact LoginScreen');
-    const {navigation, userStore} = this.props;
-
-    console.log('logged in:', userStore.session);
+    console.log('logged in:', userStore.session)
     if (userStore.isLoggedIn()) {
-
-      navigation.goBack();
-
+      navigation.goBack()
     }
   }
 
   handleSubmit = () => {
+    const {userStore} = this.props
 
-    const {userStore} = this.props;
+    const {email, password} = this.state
 
-    const {email, password} = this.state;
-
-    userStore.login(email, password);
-
-
+    userStore.login(email, password)
   };
 
   errorMessage = () => {
-    const {error} = this.props;
+    const {error} = this.props
     if (error) {
       return (
         <Text style={[styles.errorMessage, styles.center]}>
           {error}
         </Text>
-      );
+      )
     }
   };
 
   loginButton = () => {
-
-    const {userStore} = this.props;
+    const {userStore} = this.props
 
     if (userStore.fetching) {
       return (
-        <Spinner style={styles.spinner} color={Colors.fire}/>
-      );
+        <Spinner style={styles.spinner} color={Colors.fire} />
+      )
     }
 
     return (
@@ -77,39 +66,34 @@ class LoginScreen extends React.Component {
         onPress={() => { this.handleSubmit() }}
         text={I18n.t('signIn')}
       />
-    );
+    )
   };
 
-
   renderEmailField = () => {
-
-    const {userStore} = this.props;
-    const {email} = this.state;
-
+    const {userStore} = this.props
+    const {email} = this.state
 
     return (
       <TextInput
-        ref="email"
+        ref='email'
         style={styles.textInput}
         value={email}
         editable={!userStore.fetching}
-        keyboardType="default"
-        returnKeyType="next"
-        autoCapitalize="none"
+        keyboardType='default'
+        returnKeyType='next'
+        autoCapitalize='none'
         autoCorrect={false}
-        onChangeText={ email => this.setState({ email }) }
-        underlineColorAndroid="transparent"
+        onChangeText={email => this.setState({ email })}
+        underlineColorAndroid='transparent'
         onSubmitEditing={() => this.refs.password.focus()}
         placeholder={I18n.t('email')}
       />
-    );
+    )
   }
 
   renderPasswordField = () => {
-
-    const {userStore} = this.props;
+    const {userStore} = this.props
     const {password} = this.state
-
 
     return (
       <TextInput
@@ -124,14 +108,12 @@ class LoginScreen extends React.Component {
         secureTextEntry
         onChangeText={password => this.setState({ password })}
         underlineColorAndroid='transparent'
-        onSubmitEditing={()=>{this.handleSubmit()}}
-        placeholder={I18n.t('password')}/>
+        onSubmitEditing={() => { this.handleSubmit() }}
+        placeholder={I18n.t('password')} />
     )
   }
 
   createForm = () => {
-
-
     return (
       <View>
         <View style={styles.form}>
@@ -148,22 +130,20 @@ class LoginScreen extends React.Component {
         </View>
 
       </View>
-    );
-
+    )
   };
 
-  render() {
-
-    const {userStore} = this.props;
-    console.log(userStore.session);
+  render () {
+    const {userStore} = this.props
+    console.log(userStore.session)
 
     return (
       <View style={styles.mainContainer}>
         <ScrollView
           style={styles.container}
-          keyboardShouldPersistTaps="always"
+          keyboardShouldPersistTaps='always'
         >
-          <KeyboardAvoidingView behavior="position">
+          <KeyboardAvoidingView behavior='position'>
             <Image
               source={Images.logo}
               style={styles.logo}
@@ -174,9 +154,12 @@ class LoginScreen extends React.Component {
           </KeyboardAvoidingView>
         </ScrollView>
       </View>
-    );
+    )
   }
 }
 
+LoginScreen.navigationOptions = {
+  title: 'Login'
+}
 
-export default LoginScreen;
+export default LoginScreen

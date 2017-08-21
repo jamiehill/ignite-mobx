@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": "@ats-core/eslint-config-ats",
+  "extends": "@penfold/eslint-config-penfold",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -9,7 +9,7 @@ module.exports = {
     "no-return-assign": ["error", "except-parens"],
   },
   "overrides": {
-    "files": [ "src/scripts/**/*.test.js" ],
+    "files": [ "src/app/**/*.test.js" ],
     // the following config should be in @ats-core/eslint-config-ats, but eslint@latest
     // doesn't support "extends" for sharable configs in an eslintrc overrides section
     "plugins": [

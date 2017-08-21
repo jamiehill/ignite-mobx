@@ -1,7 +1,7 @@
 import test from 'ava'
 import React from 'react'
 import { Text } from 'react-native'
-import AlertMessage from '../../src/Components/AlertMessage'
+import AlertMessage from 'app/components/AlertMessage'
 import { shallow } from 'enzyme'
 
 // Basic wrapper

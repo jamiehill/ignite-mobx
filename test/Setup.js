@@ -1,6 +1,6 @@
 import mockery from 'mockery'
 import m from 'module'
-import english from '../src/I18n/languages/english.json'
+import english from '../src/app/i18n/languages/english.json'
 import {keys, replace, forEach} from 'ramda'
 
 // inject __DEV__ as it is not available when running through the test
@@ -24,10 +24,10 @@ mockery.registerMock('react-native-vector-icons/Ionicons', {})
 mockery.registerMock('react-native-router-flux', {Actions: {'myScreen': () => {}}, ActionConst: {RESET: 'reset'}})
 
 // Mock i18n as it uses react native stuff
-// This mock returns the interpolated text from the english.json file in src/I18n
-// If you are not using '../src/I18n/english.json' for your I18n values, simply replace import english
-// with the import at the top of this file from '../src/I18n/english.json' with the I18n json file you
-// want to use, such as "import french from '../src/I18n/fr.json'" and set 'let value = french[key]`
+// This mock returns the interpolated text from the english.json file in src/i18n
+// If you are not using '../src/i18n/english.json' for your i18n values, simply replace import english
+// with the import at the top of this file from '../src/i18n/english.json' with the i18n json file you
+// want to use, such as "import french from '../src/i18n/fr.json'" and set 'let value = french[key]`
 mockery.registerMock('react-native-i18n', {
   t: (key, replacements) => {
     let value = english[key]

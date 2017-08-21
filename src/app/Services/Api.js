@@ -22,7 +22,7 @@ const create = (baseURL = 'https://api.spotify.com/v1/') => {
 
   // Wrap api's addMonitor to allow the calling code to attach
   // additional monitors in the future.  But only in __DEV__ and only
-  // if we've attached Reactotron to console (it isn't during unit tests).
+  // if we've attached Reactotron to console (it isn't during unit test).
   if (__DEV__ && console.tron) {
     api.addMonitor(console.tron.apisauce)
   }
@@ -45,8 +45,7 @@ const create = (baseURL = 'https://api.spotify.com/v1/') => {
     query,
     type: 'track',
     limit: 10
-  });
-
+  })
 
   // ------
   // STEP 3

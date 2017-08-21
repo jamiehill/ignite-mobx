@@ -1,38 +1,35 @@
+import React from 'react'
+import { StyleSheet } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import LaunchScreen from '../container/LaunchScreen'
-import LoginScreen from '../container/LoginScreen'
-import MusicScreen from '../container/MusicScreen'
+import RacingScreen from 'app/container/sport/RacingScreen'
+import LoginScreen from 'app/container/LoginScreen'
+import MusicScreen from 'app/container/MusicScreen'
+import { Colors } from 'styles'
 
-import { Colors } from 'styles';
-import styles from './Styles/NavigationStyles'
-
-// Manifest of possible screens
-const PrimaryNav = StackNavigator({
+const AppNavigation = StackNavigator({
   LaunchScreen: {
-    screen: LaunchScreen,
-    navigationOptions: () => ({
-			headerVisible: false
-		})
+    screen: RacingScreen,
   },
   LoginScreen: {
     screen: LoginScreen,
-    navigationOptions: () => ({
-			title: 'Login'
-		})
   },
   MusicScreen: {
-    screen: MusicScreen,
+    screen: MusicScreen
   }
 }, {
-  // Default config for all screens
-  headerMode:'screen',
-  navigationOptions: ({ navigation }) => ({
-    title: navigation.state && navigation.state.params && navigation.state.params.title,
-    headerTintColor: Colors.fire,
-    headerStyle: styles.header
-
-  })
-
+  headerMode: 'screen',
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: 'white',
+    },
+    headerTitleStyle: {
+      color: 'white',
+    },
+    headerBackTitleStyle: {
+      color: 'white',
+    },
+    headerTintColor: 'white',
+  }
 })
 
-export default PrimaryNav
+export default AppNavigation

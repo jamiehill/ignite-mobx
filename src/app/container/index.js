@@ -1,43 +1,24 @@
-import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
-import Navigation from '../Navigation/AppNavigation'
-
-import { observable } from 'mobx';
-import { observer, inject } from 'mobx-react';
-
-import { addNavigationHelpers } from 'react-navigation';
-
-// Styles
+import React, {Component} from 'react'
+import {View, StatusBar} from 'react-native'
+import Navigation from 'app/navigation/AppNavigation'
+import {addNavigationHelpers} from 'react-navigation'
 import styles from './Styles/RootContainerStyles'
+import {observer, inject} from 'mobx-react/native'
+import {observable} from 'mobx'
 
-@inject('navigationStore')
-@observer
-class RootContainer extends Component {
+const Index = props => (
+  <View style={styles.applicationView}>
+    <StatusBar backgroundColor='black'
+      barStyle='light-content'
+      style={{ height: 100 }}
+    />
+    <Navigation
+      navigation={addNavigationHelpers({
+        dispatch: props.nav.dispatch,
+        state: props.nav.state
+      })}
+    />
+  </View>
+)
 
-  constructor(props, context) {
-    super(props, context)
-    this.nav = this.props.navigationStore
-  }
-  componentDidMount () {
-
-  }
-
-  render () {
-    return (
-      <View style={styles.applicationView}>
-        <StatusBar backgroundColor="black"
-                   barStyle="light-content"
-                   style={{ height: 100 }}
-        />
-        <Navigation
-          navigation={addNavigationHelpers({
-            dispatch: this.nav.dispatch,
-            state: this.nav.navigationState,
-          })}
-        />
-      </View>
-    )
-  }
-}
-
-export default RootContainer;
+export default inject('nav')(observer(Index))

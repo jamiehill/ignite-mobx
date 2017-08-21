@@ -1,7 +1,7 @@
 // https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md
 import test from 'ava'
 import React from 'react'
-import DrawerButton from '../../src/Components/DrawerButton'
+import DrawerButton from 'app/components/DrawerButton'
 import { shallow } from 'enzyme'
 
 const wrapper = shallow(<DrawerButton onPress={() => {}} text='hi' />)

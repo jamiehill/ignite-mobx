@@ -6,28 +6,28 @@ import { Colors, Metrics, ApplicationStyles } from 'styles'
 export default StyleSheet.create({
   row: {
     flex: 1,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-  rightContainer:{
+  rightContainer: {
     flexDirection: 'column',
     padding: Metrics.baseSpace,
     alignItems: 'stretch',
     justifyContent: 'center',
-    flex: 1,
+    flex: 1
   },
-  imgContainer:{
+  imgContainer: {
     width: 60,
     paddingVertical: Metrics.baseSpace,
     alignItems: 'flex-end',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-  image:{
+  image: {
     width: 50,
     height: 50,
     borderRadius: Metrics.baseRadius,
-    borderWidth: Metrics.smallLine,
+    borderWidth: Metrics.smallLine
   },
   boldLabel: {
     fontWeight: 'bold',

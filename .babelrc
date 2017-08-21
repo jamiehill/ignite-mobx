@@ -1,4 +1,15 @@
 {
  "presets": ["react-native"],
- "plugins": ["transform-decorators-legacy"]
+  "plugins": [
+    "transform-decorators-legacy",
+    ["module-resolver", {
+      "alias": {
+        "app": "penfold/src/app",
+        "config": "penfold/src/config",
+        "images": "penfold/src/images",
+        "styles": "penfold/src/styles",
+        "i18n": "penfold/src/app/i18n"
+      }
+    }]
+  ]
 }

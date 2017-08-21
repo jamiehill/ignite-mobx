@@ -1,32 +1,26 @@
-import axios from 'axios';
-import { observable } from 'mobx';
-import { Alert } from 'react-native';
+import { observable } from 'mobx'
+import { Alert } from 'react-native'
+import API from 'app/services/Api'
+import FixtureAPI from 'app/services/FixtureApi'
 
-import API from '../Services/Api'
-import FixtureAPI from '../Services/FixtureApi'
-import DebugConfig from '../../config/DebugConfig'
-
-const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
+const api = true ? FixtureAPI : API.create()
 
 export default class SearchStore {
-
   @observable tracks = [];
 
-  getTrackList(query: string) {
+  getTrackList (query: string) {
     if (!query) {
-      this.tracks = [];
-      return;
+      this.tracks = []
+      return
     }
-    api.search(query).
-    then((response)=>{
-      console.log('response',response);
-      if (response.ok && response.data){
-        this.tracks = response.data.tracks.items;
+    api.search(query)
+    .then((response) => {
+      console.log('response', response)
+      if (response.ok && response.data) {
+        this.tracks = response.data.tracks.items
       } else {
-        Alert.alert('Connection error', 'Couldn\'t fetch the data.');
+        Alert.alert('Connection error', 'Couldn\'t fetch the data.')
       }
-
-    });
-
+    })
   }
 }

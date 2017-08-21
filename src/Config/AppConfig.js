@@ -1,6 +1,4 @@
-// Simple React Native specific changes
-
-import '../I18n/I18n'
+import 'i18n'
 
 export default {
   // font scaling override - RN default is on

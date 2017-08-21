@@ -1,7 +1,7 @@
 // https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md
 import test from 'ava'
 import React from 'react'
-import RoundedButton from '../../src/Components/RoundedButton'
+import RoundedButton from 'app/components/RoundedButton'
 import { shallow } from 'enzyme'
 
 // Basic wrapper

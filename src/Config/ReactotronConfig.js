@@ -1,4 +1,4 @@
-import Config from '../Config/DebugConfig'
+import Config from './DebugConfig'
 const Reactotron = require('reactotron-react-native').default
 const errorPlugin = require('reactotron-react-native').trackGlobalErrors
 const apisaucePlugin = require('reactotron-apisauce')
@@ -18,7 +18,7 @@ if (Config.useReactotron) {
     }))
 
     // register apisauce so we can install a monitor later
-    .use(apisaucePlugin())  
+    .use(apisaucePlugin())
 
     // let's connect!
     .connect()

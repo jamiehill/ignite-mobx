@@ -1,24 +1,22 @@
-import { action, observable } from 'mobx';
+import { action, observable } from 'mobx'
 
-import Navigation from '../Navigation/AppNavigation';
+import Navigation from 'app/navigation/AppNavigation'
 
 class NavigationStore {
 
-  @observable.ref navigationState = {
+  @observable.ref state = {
     index: 0,
     routes: [
-      { key: "LaunchScreen", routeName: "LaunchScreen" },
-      //{ key: "LoginScreen", routeName: "LoginScreen" }
-    ],
+      { key: 'LaunchScreen', routeName: 'LaunchScreen' }
+      // { key: "LoginScreen", routeName: "LoginScreen" }
+    ]
   }
 
   @action dispatch = (action, stackNavState = true) => {
-    const previousNavState = stackNavState ? this.navigationState : null;
-    return this.navigationState = Navigation
-        .router
-        .getStateForAction(action, previousNavState);
+    const previousNavState = stackNavState ? this.state : null
+    return this.state = Navigation.router
+        .getStateForAction(action, previousNavState)
   }
-
 }
 
-export default navigationStore = new NavigationStore();
+export default navigationStore = new NavigationStore()

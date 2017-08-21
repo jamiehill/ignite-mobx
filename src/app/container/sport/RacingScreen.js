@@ -3,7 +3,6 @@ import { ScrollView, Text, Image, View } from 'react-native'
 import RoundedButton from 'app/components/RoundedButton'
 import { observer, inject } from 'mobx-react/native'
 import styles from '../Styles/LaunchScreenStyles'
-import Spinner from 'app/components/Spinner'
 import { Colors, Images } from 'styles'
 
 const RacingScreen = props => (
@@ -16,10 +15,9 @@ const RacingScreen = props => (
 
       <View style={styles.section} >
         <Text style={styles.sectionText}>
-          Base Boilerplate integrating Ignite with MobX and React Navigation.
+          Racing Yeah!
         </Text>
       </View>
-      { this.loginLogout() }
 
       <RoundedButton
         text={`Search "${this.search}" on Spotify`}
@@ -29,5 +27,10 @@ const RacingScreen = props => (
     </ScrollView>
   </View>
 )
+
+RacingScreen.navigationOptions = {
+  headerVisible: true,
+  title: <Image source={Images.launch} style={styles.top} />,
+}
 
 export default RacingScreen
